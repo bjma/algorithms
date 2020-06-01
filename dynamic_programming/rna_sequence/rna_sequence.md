@@ -18,6 +18,7 @@ A set of pairs `S = [(b_i, b_j)]`, where `b_i` and `b_j` are bases, must satisfy
 
 ## Secondary structure
 Consider the RNA sequence `B = "AUGGGGCAU"`. We must determine a set of pairs that match each base with its complement.
+
 ![ex. 1](https://i.imgur.com/AvSlvef.png)
 
 Let's represent it as a string:
@@ -65,8 +66,11 @@ If `b[j]` pairs with some `b[t]` for some `i <= t < j - 4`, then
 where `OPT(t, j) = 1`.   
 
 To understand this part, recall the non-crossing caveat, visualized here:
+
 ![non-crossing](https://i.imgur.com/b435Aiq.png)
 
 Thus, if `b[j]` pairs with some `b[t]` where `i <= t < j - 4`, then notice how we're confined the the bounds `i` to `t - 1` since we can't have any crossing pairs:
+
 ![bounds](https://i.imgur.com/IN27H4w.png)
+
 So, we're faced with two independent subproblems: finding a sequence within the bounds of `i` to `t - 1`, and `t + 1` to `j - 1` if `b[t]` and `b[j]` match.
