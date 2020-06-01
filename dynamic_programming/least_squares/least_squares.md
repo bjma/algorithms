@@ -33,3 +33,25 @@ Let `e[i, j]` be the sum of squared errors for points `P[i], P[i + 1], ..., P[j]
 To compute `OPT[j]`,
 * Last segment uses some points `P[i], P[i + 1], ..., P[j]`.
 * Cost = `e[i, j] + c + OPT[i - 1]`
+
+## Pseudocode
+Honestly I'm kind of tired writing real Python code at this point, since these problems take a lot of effort setting up. I'll probably add actual code for this stuff once school is over.
+
+Anyway, here's the pseudocode:
+``` python
+def segmented_least_squares(n, P, c):
+    e = [some 2 dimensional array]
+    # init e(i, j)
+    for j in range(1, n):
+        for i in range(1, j):
+            # compute e(i, j) from P[i] to P[j]
+            e[i, j] = compute_SSE(i, j, P)
+    # init memo array
+    M[0] = 0
+    for j in range(1, n):
+        # this takes the min over 1 <= i <= j
+        M[j] = min(e[i, j] + c + M[i - 1] for all 1 <= i <= j)
+
+```
+
+Total runtime is `O(n^3)`.
