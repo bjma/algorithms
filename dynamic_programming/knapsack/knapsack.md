@@ -79,7 +79,38 @@ total_value = 6
 # since C = 1, we can't choose any other items 
 ```
 
+Now, what if we chose to pick `items[2]` first?
+``` python
+# C = 7 - 1 
+C = 6
+# total_val = 0 + 2
+total_val = 2
+
+# pick item 3
+C = 3
+total_val = 6
+
+# pick item 5 (only one we can pick)
+C = 1
+total_val = 9
+
+# instead of picking item 3, let's pick item 4
+C = 6 - 4 = 2
+total_val = 2 + 5 = 7
+
+# since we have a capacity of 2 left, we can
+# only choose item 5 (again)
+C = 2 - 2 = 0
+total_val = 7 + 3 = 10
+
+# we reached our globally maximum possible value
+```
+
 Did you notice the overlapping subproblems?
+
+We are choosing items based on a current capacity, which is the difference of the given capacity and the weights of the items chosen. Also notice how, at each current capacity, there's a selection of items that maximizes the value (i.e. for both examples, when `C = 2`, we see that `item[5]` maximizes the total value for that capacity) 
+
+Thus, at each choice, *we're choosing the local maximum value possible at some weight `c <= C`*, which is our subproblem.
 
 ### Problem visualization 
 Let's run through the previous example with a visualization. For this, we'll be using a **dynamic programming table**, which is pretty much our memoization table.
