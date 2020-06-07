@@ -69,7 +69,7 @@ In the previous divide and conquer algorithms we went through, we simply divided
 
 This is because simply dividing our polynomia *A(X)* into equal length partitions won't do much in the scope of converting to a different form. Instead, we divide them into two partitions, one containing all **even** terms and another containing all **odd** terms. This way, we split the polynomials into half of the degree *n*.
 
-![divide-poly](https://i.imgur.com/BIQMJ0W.png)
+![divide-poly](https://i.imgur.com/S2rf258.png)
 
 ### Conquer
 Now, to compute *A(X)*, we need to recursively compute all the outputs for both the even and odd partitions of the polynomial.
