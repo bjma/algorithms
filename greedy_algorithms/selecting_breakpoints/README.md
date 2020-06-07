@@ -8,7 +8,7 @@ Consider the following problem:
 >
 > Your **goal** is to devise an algorithm that minimizes the number of stops you make during your trip.
 
-To visualize (`L = 7`):
+To visualize:
 
 ![roadmap](https://i.imgur.com/eE5eLTi.png)
 
