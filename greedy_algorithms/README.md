@@ -36,7 +36,7 @@ Let's go over some optimal choices (greedy heuristic) we can make when selecting
 Let the set of jobs be a list of tuples containing start times and finish times of each respective job:
  `jobs = [(s[1], f[1]), (s[2], f[2]), ..., (s[n], f[n])]`
 
-#### Select earliest relative start time
+#### (a) Select earliest relative start time
 Let's say we choose the job with the earliest relative start time, starting with `min_start(jobs)`.
 
 ![earliest-start-time](https://i.imgur.com/icLmXKd.png)
@@ -45,14 +45,14 @@ We can see that the optimal solution is *4*, which are the jobs above the longes
 
 Thus, we can conclude that this "optimal choice" isn't optimal at all.
 
-#### Select job with the shortest duration
+#### (b) Select job with the shortest duration
 Correcting what happened with our previous choice, what if we chose the job with the shortest duration?
 
 ![shortest-job](https://i.imgur.com/VvYewAz.png)
 
 We can see that this also isn't an optimal choice. The optimal solution is *2*, which contain the two jobs above. If we simply choose the shortest job, we miss out on an optimal solution.
 
-#### Select the most compatible job
+#### (c) Select the least incompatible job
 Okay, so what if we choose the job that has the least number of incompatible jobs?
 
 Looking at our previous choices, we can see that choosing the jobs with least incompatibles solves our problems. For **(a)**, all four jobs above the longer one have *1* incompatible jobs, where the long one has *4*. Likewise, the two jobs in **(b)** above the short interval, which has *2* incompatibilites, each have *1* incompatibility.
@@ -65,7 +65,7 @@ Our optimal solution is *4*. but since we choose the least incompatible jobs, bu
 
 Thus, this choice is not optimal.
 
-#### Select job that finishes the earliest
+#### (d) Select job that finishes the earliest
 If we select the job that finishes the earliest, or in other words, a job s.t. `job[j] = min_finish(jobs)`, we can solve a lot of the problems we ran into before.
 
 For **(a)**, we'd be able to choose the *4* jobs on top.
