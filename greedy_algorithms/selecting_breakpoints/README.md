@@ -34,7 +34,7 @@ How do we ensure that we don't just randomly choose a suboptimal breakpoint? If 
 
 To ensure that this doesn't happen, we should first sort the list of breakpoints `b` s.t. every breakpoint is in increasing order. This doesn't completely solve the overall problem though. We need to do some additional restructuring. 
 
-The key to our optimal substructure is to **pick the largest integer `p` such that `b[p] <= x + C`**.
+The key to our optimal substructure is to **pick the largest integer `p` such that `b[p] <= x + C`**. This way, we maximize our distance before charging our Tesla.
 
 Thus, we update our current distance `x` to the breakpoint `b[p]` in which we stop at. Then, we append the breakpoint into our subset. If `b[p] = x`, that means `C = 0`, implying that we're out of battery, and our road trip ends prematurely.
 
