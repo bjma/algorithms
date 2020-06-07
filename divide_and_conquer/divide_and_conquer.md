@@ -52,6 +52,11 @@ I'll be providing notes on algorithms that we went over in class. This includes:
 
 Just for reference, *Binary Search* is also a divide and conquer algorithm.
 
+## Summary
+In essence, to devise a divide and conquer algorithm, we first need to find the base cases, i.e. exit clauses and the smallest possible subproblems.
 
+Then, we need to find a way to **divide** our problem until we reach those subproblems.
 
+After, we **conquer** by solving each subproblem.
 
+Finally, we **combine** all our subsolutions to form the global solution.
