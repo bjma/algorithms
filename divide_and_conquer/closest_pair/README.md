@@ -43,7 +43,7 @@ Notice how, in the previous picture, there's actually a pair of points that make
 
 So, now comes our **combine** portion.
 
-We can find the closest pair of points *between* the regions by limiting our search space to the length of the shortest line in the horizontal direction across both gradients. This means that, if we detect a line within this region, it'll be shorter than the line we previously found.
+We can find the closest pair of points *between* the regions by limiting our search space to the length of the shortest line in the horizontal direction across both sides of the gradient. This means that, if we detect a line within this region, it'll be shorter than the line we previously found.
 
 To visualize:
 
