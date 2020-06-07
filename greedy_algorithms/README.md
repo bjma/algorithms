@@ -85,6 +85,15 @@ Recall our definition of incompatibility, where two jobs `i` and `j` are incompa
 
 *This* is our **optimal substructure** - we basically choose the smallest relative "limit" over the all the jobs, which ensures we choose the maximum number of jobs, while rejecting all incompatible jobs within that small limit.
 
+## Content
+The following are the greedy algorithms that we will cover:
+* Interval scheduling (we used this as an example above)
+* Selecting breakpoints
+* Optimal caching
+* Dijkstra's Shortest Paths
+* Kruskal's Minimum Spanning Trees
+* Prim's Minimum Spanning Trees
+
 ## Summary
 In essence, we can build a greedy algorithm by sticking to the follwoing general strategy:
 * Define **subproblems**; usually done by finding an **optimal approach**
