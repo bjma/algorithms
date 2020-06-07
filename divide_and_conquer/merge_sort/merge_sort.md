@@ -147,4 +147,34 @@ def sort(A, l, u):
 
 And there, we have our merge sort algorithm. If we wanted to call it, we'd use `sort(A, 0, len(A) - 1)`.
 
-    
+## Runtime
+We can unroll the runtime by considering the recursion tree for `sort()` (when we partition). We divide the subarray `A` of length `n` into halves each time, so we get a recursion tree like this:
+```
+                            T(n)
+                           /    \
+                      T(n/2)     T(n/2)
+                      /    \      /  \
+                 T(n/4) T(n/4) T(n/4) T(n/4)
+                    .     .      .      .
+                    .     .      .      .
+                    .     .      .      .
+                T(n/2^k)
+
+```
+
+We can see that eventually, we get to some small partition of *T(n / 2<sup>k</sup>). Remember our base case? Eventually, we'll just get to a subarray with one element. So, we can generalize that *n / 2<sup>k</sup> = 1*.
+
+Using some math, we can see that:
+*n = 2<sup>k</sup>*
+*log<sub>2</sub>(n) = log<sub>2</sub>(2<sup>k</sup>)*
+*log<sub>2</sub>(n) = k * log<sub>2</sub>(2)*
+*log<sub>2</sub>(n) = k * 1*
+*log(n) = k*
+**Note that log<sub>2</sub>(n) can be simplified to log(n)**
+
+Thus, the runtime for `sort()` is *O(logn)*. However, we're not done yet. We also need to consider the runtime for `merge()`, since it's called in each recursive call to `sort()`.
+
+Looking at the code for `merge()`, can you guess its runtime? If you guessed *O(n)* in the worst case, you're right; all we do is traverse subarrays.
+
+Since `merge()` is called each time `sort()` is called, the runtime is therefore *O(nlogn)*.
+

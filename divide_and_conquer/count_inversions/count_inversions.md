@@ -206,3 +206,5 @@ def merge_and_count(L, R):
     # return count and sorted merged array
     return count, A
 ```
+
+The runtime for this algorithm is the same as merge sort, which is *O(nlogn)*.
