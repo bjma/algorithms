@@ -15,7 +15,7 @@ I really like using the simplification used by Erik Dermaine (MIT):
 * Greedy-choice property (greedy heuristic)
     * Each subproblem is solved using a **locally optimal choice**
 
-### Strategy for definining an optimal substructure
+## Strategy for definining an optimal substructure
 Let's use the problem of [interval scheduling](https://en.wikipedia.org/wiki/Interval_scheduling#:~:text=Interval%20scheduling%20is%20a%20class,it%20needs%20to%20be%20executed.) as an example, which can be solved using a greedy algorithm.
 
 Consider a set of *n* jobs, represented by a start time `s[j]` and finish time `f[j]`, where `1 <= j <= n`:
@@ -30,13 +30,13 @@ Let's try to find an optimal structure to our algorithm. Obviously, the optimal 
 
 Below, I'll go over different optimal choices we can make and compare them.
 
-#### Determing an optimal choice for selecting jobs
+### Determing an optimal choice for selecting jobs
 Let's go over some optimal choices (greedy heuristic) we can make when selecting jobs. This way, if we define an optimal choice, we create an optimal substructure to our subproblems.
 
 Let the set of jobs be a list of tuples containing start times and finish times of each respective job:
  `jobs = [(s[1], f[1]), (s[2], f[2]), ..., (s[n], f[n])]`
 
-##### Select earliest relative start time
+#### Select earliest relative start time
 Let's say we choose the job with the earliest relative start time, starting with `min_start(jobs)`.
 
 ![earliest-start-time](https://i.imgur.com/icLmXKd.png)
@@ -45,14 +45,14 @@ We can see that the optimal solution is *4*, which are the jobs above the longes
 
 Thus, we can conclude that this "optimal choice" isn't optimal at all.
 
-##### Select job with the shortest duration
+#### Select job with the shortest duration
 Correcting what happened with our previous choice, what if we chose the job with the shortest duration?
 
 ![shortest-job](https://i.imgur.com/VvYewAz.png)
 
 We can see that this also isn't an optimal choice. The optimal solution is *2*, which contain the two jobs above. If we simply choose the shortest job, we miss out on an optimal solution.
 
-##### Select the most compatible job
+#### Select the most compatible job
 Okay, so what if we choose the job that has the least number of incompatible jobs?
 
 Looking at our previous choices, we can see that choosing the jobs with least incompatibles solves our problems. For **(a)**, all four jobs above the longer one have *1* incompatible jobs, where the long one has *4*. Likewise, the two jobs in **(b)** above the short interval, which has *2* incompatibilites, each have *1* incompatibility.
@@ -65,7 +65,7 @@ Our optimal solution is *4*. but since we choose the least incompatible jobs, bu
 
 Thus, this choice is not optimal.
 
-##### Select job that finishes the earliest
+#### Select job that finishes the earliest
 If we select the job that finishes the earliest, or in other words, a job s.t. `job[j] = min_finish(jobs)`, we can solve a lot of the problems we ran into before.
 
 For **(a)**, we'd be able to choose the *4* jobs on top.
@@ -76,7 +76,7 @@ For **(c)**, we'd choose the first, drop the three that stack, pick the fourth, 
 
 So, this way of selecting jobs seems to be the optimal choice.
 
-#### Optimal substructure for interval scheduling
+### Optimal substructure for interval scheduling
 We now found the optimal choice, which is our greedy heuristic. How are our subproblems optimally structured?
 
 We have an optimal substructure if our subsolutions build up to a global solution. So how does our greedy heuristic do this? 
