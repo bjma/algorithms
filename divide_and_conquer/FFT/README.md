@@ -137,6 +137,9 @@ def fft(A):
     return A_new
 ```
 
+## Extra: Inverse FFT
+If we wanted to convert a polynomial from its sample vector representation to a coefficient vector, we use the *inverse* Fast Fourier Transform.
+
 
 
 
