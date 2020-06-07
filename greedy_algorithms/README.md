@@ -89,7 +89,6 @@ Recall our definition of incompatibility, where two jobs `i` and `j` are incompa
 The following are the greedy algorithms that we will cover:
 * Interval scheduling (we used this as an example above)
 * Selecting breakpoints
-* Optimal caching
 * Dijkstra's Shortest Paths
 * Kruskal's Minimum Spanning Trees
 * Prim's Minimum Spanning Trees
