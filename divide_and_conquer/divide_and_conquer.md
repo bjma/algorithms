@@ -18,7 +18,7 @@ Notice how, if our grid is *2 x 2*, filling a tromino in that space will leave o
 
 ![tromino-4x4](https://i.imgur.com/UMI0eSj.png)
 
-Our problem contains a gap, so technically it's okay if we leave a gap. Thus, we solved one of the subproblems, which is filling in a *2 x 2* grid. However, if we used this as our main subproblem, partitioning the grid into *2 x 2* subgrids is a little inefficient.
+Our original grid contains a gap, so technically it's okay if we leave a gap in this subproblem. Thus, we solved one of the subproblems, which is filling in a *2 x 2* grid. However, if we can't divide the grid into *2x2* subgrids easily, and it's extremely inefficient. What we need to do now is find a way to get to this subproblem.
 
 We defined a base case (smallest case where our problem can be solved), but we haven't defined a good subproblem yet. What if we widen our scope in how we divide the grid?
 
