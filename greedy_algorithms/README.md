@@ -88,7 +88,8 @@ Recall our definition of incompatibility, where two jobs `i` and `j` are incompa
 ## Summary
 In essence, we can build a greedy algorithm by sticking to the follwoing general strategy:
 * Define **subproblems**; usually done by finding an **optimal approach**
-* Determine a **locally optimal choice** for the subproblems such that it provides an **optimal substructure** that allows us to build a **globally optimal solution** from **optimal subsolutions**
+* Determine a **locally optimal choice** for the subproblems such that it provides an **optimal substructure** (a substructure of the original problem that ensures our optimal choice is always optimal) 
+* Use that optimal substructure to build a **globally optimal solution** from **optimal subsolutions**
 
 
 
