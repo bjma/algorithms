@@ -64,7 +64,7 @@ Let `x` be a list of x-coordinates, and `y` be a list of y-coordinates.
 
 `P` is a list containing points, represented as the tuple `(x[i], y[i])`.
 
-Below is a divide and conquer algorithm that finds the closest pair of points in `P`.
+Below is a divide and conquer algorithm that finds the closest pair of points in `P`. If you want to see the full code, check out the `.py` file in this directory.
 
 ``` python
 # assume that we can access x and y from this method
@@ -89,40 +89,6 @@ def closest_pair(P):
     line = closest_split_pair(P, mid, line_LR)
     # return shortest line
     return min(line, line_LR)
-
-# finds closest pair across gradient
-def closest_split_pair(P, L, pair):
-    # init default pairing
-    line = dist(P[0], P[mid])
-    # search through each point
-    for i in range(len(P)):
-        # search through each point across gradient
-        for j in range(L, len(P)):
-            p, q = P[i], P[j]
-            dst = dist(p, q)
-            line = min(dst, line)
-    return line
-
-
-
-# compute euclidean distance
-def dist(p1, p2):
-    x1 = p1[0]
-    x2 = p2[0]
-    y1 = p1[1]
-    y2 = p2[1]
-
-    return sqrt((x2 - x1)**2 + (y2 - y1)**2)
-
-# sort P by y-coordinates
-def sort_by_ycoord(P):
-    n = len(P)
-    # simple bubble sort
-    for i in range(n):
-        for j in range(n):
-            if P[i][1] > P[j][1]:
-                P[i], P[j] = P[j], P[i]
-    return P
 ```
 
 Honestly I don't know if this code is correct. I didn't run it. Feel free to check though.
