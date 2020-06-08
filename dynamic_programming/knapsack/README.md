@@ -281,7 +281,7 @@ items[5] = (v[5] = 3, w[5] = 2)
 
 If our current capacity is `w = 6` and we choose to put `items[5]` into our knapsack, then its weight reduces our current capacity to `w = 6 - 2`, making `w = 4`. Since we already added `items[5]`, then we can only choose from `items[1:4]`.
 
-This is where our optimal substructure comes into play. If you look at the table, we already solved the smaller subproblem where we compute the maximum value possible when considering `items[1:4]` at the capacity `w = 4` (bolded):
+This is where our optimal substructure comes into play. If you look at the table, we already solved the smaller subproblem where we compute the maximum value possible when considering `items[1:4]` at the capacity `w = 4` (bolded and underlined):
 
 |       | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7     |
 |-------|---|---|---|---|---|---|---|-------|
@@ -289,8 +289,8 @@ This is where our optimal substructure comes into play. If you look at the table
 | **1** | 0 | 0 | 0 | 2 | 2 | 2 | 2 | 2     |
 | **2** | 0 | 2 | 2 | 2 | 4 | 4 | 4 | 4     |
 | **3** | 0 | 2 | 2 | 4 | 6 | 6 | 6 | 8     |   
-| **4** | 0 | 2 | 2 | 4 | **6** | 7 | 7 | 9     |
-| **5** | 0 | 2 | 3 | 5 | 6 | 7 | X  |       |
+| **4** | 0 | 2 | 2 | 4 | <ins>**6**</ins> | 7 | 7 | 9     |
+| **5** | 0 | 2 | 3 | 5 | 6 | 7 | **X**  |       |
 
 This brings us to the solution to our current subproblem, which is the maximum value we can get when adding `items[5]` to our knapsack when `w = 6`:
 
@@ -307,7 +307,7 @@ This `curr_val` is *greater than* our other previous subproblem, which is the ma
 V[4][6] = 7
 ```
 
-Thus, we get a new **optimal solution** `V[5][6] = 9` to the subproblem when our weight capacity is `w = 6` (bolded:
+Thus, we get a new **optimal solution** `V[5][6] = 9` to the subproblem when our weight capacity is `w = 6` (bolded and underlined):
 
 |       | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7     |
 |-------|---|---|---|---|---|---|---|-------|
@@ -316,7 +316,7 @@ Thus, we get a new **optimal solution** `V[5][6] = 9` to the subproblem when our
 | **2** | 0 | 2 | 2 | 2 | 4 | 4 | 4 | 4     |
 | **3** | 0 | 2 | 2 | 4 | 6 | 6 | 6 | 8     |   
 | **4** | 0 | 2 | 2 | 4 | 6| 7 | 7 | 9     |
-| **5** | 0 | 2 | 3 | 5 | 6 | 7 | **9**  |       |
+| **5** | 0 | 2 | 3 | 5 | 6 | 7 | <ins>**9**</ins>  |       |
 
 If we continue onto the next step, we'll be using the optimal substructure to solve for the *globally* optimal solution `V[5][7]`.
 
