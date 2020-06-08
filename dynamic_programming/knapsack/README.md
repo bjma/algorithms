@@ -249,14 +249,14 @@ As a reminder, a problem of size *n* has an optimal substructure if its global s
 
 Looking at how we build our [solution table](#problem-visualization), we can see how the optimal substructure works as the algorithm continues to run.
 
-More specifically, the optimal substructure lies in our recurrence, or in other words, how we decide *when* to update which items to put into the knapsack:
+More specifically, the optimal substructure lies in our recurrence, or in other words, how we decide *when* to update which items to put into the knapsack (optimal choice):
 
 ``` python
 # Max value sum when considering items 1, ..., j  at current weight capacity w
 V[j][w] = max(V[j - 1][w], V[j - 1][w - w_j] + v_j)
 ```
 
-Our optimal substructure lies in how we solve our overlapping subproblems, which are the maximum value we can have in a knapsack with a subcapacity `w <= C` when considering items `1, ..., j <= n`. Let's redefine our **overlapping subproblems** first.
+To see how our optimal substructure comes from how we solve our overlapping subproblems, which are the maximum values we can have in a knapsack with a subcapacity `w <= C` when considering items `1, ..., j <= n`, let's redefine our **overlapping subproblems** first.
 
 We solve our subproblems by solving for all possible weight capacities from `0` to `C` when considering `items[1]`, `items[1:2]`, ..., `items[1:n]`. 
 
