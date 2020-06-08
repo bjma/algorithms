@@ -42,14 +42,17 @@ If we look at the recursion tree, we can notice some overlapping subproblems. Na
 
 This way of computing takes *exponential* time *O(2<sup>n</sup>)*, since we're needlessly repeating recursive computations that have already been solved.
 
-This is where the defining trait of dynamic programming algorithms - memoization/tabulation - comes in. I'll go over how to implement solution caching in the [variations](#variations) section.
+This is where the defining technique of dynamic programming algorithms - memoization/tabulation - comes in. I'll go over how to implement solution caching in the [variations](#variations) section.
 
 ### Optimal substructure
 Recall how, for greedy algorithms, we build up to a global solutions by using locally optimal solutions to subproblems. If we write our algorithm in a way where it provides an optimal substructure, our solutions to subproblems are ensured to be optimal.
 
 Dynamic programming works the same way, where we find the optimal solution to a problem of size *n* by splitting into subproblems of size *n' < n*, building up to the globally optimal solution using locally optimal subsolutions to subproblems of size *n'*.
 
-A good example is the infamous [knapsack](https://github.com/bjma/cse-102/tree/master/dynamic_programming/knapsack#optimal-substructure) problem. 
+A good example is the infamous [knapsack](https://github.com/bjma/cse-102/tree/master/dynamic_programming/knapsack#optimal-substructure) problem. Check out the link for an indepth explanation of how the optimal substructure of a dynamic programming problem comes into play.
+
+In essence, we form our optimal substructure using memoization.
+
 ## Variations
 There are two variations to dynamic programming algorithms: **top-down** and **bottom-up**. Both yield the same solutions, but each one builds up to the solution differently.
 
@@ -115,6 +118,9 @@ Both approaches to dynamic programming have their pros and cons.
 | Easier to implement                   | Involves harder techniques                                        |
 | Only required subproblems are solved  | Every single subproblem is solved                                 |
 
-
-
 ## Strategy
+The general strategy for solving dynamic programming problems uses these following steps:
+* Break up problem of size *n* into a series of <ins>overlapping subproblems</ins> of varying sizes *n' < n*.
+* Solve each subproblem using an **optimal choice**, defined by a <ins>recurrence</ins>
+* Cache immediate solutions to subproblems into a memoization array/hashtable for later use
+* Combine solutions to subproblems using an **optimal substructure** in order to build a solution for the overall problem
