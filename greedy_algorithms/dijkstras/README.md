@@ -1,5 +1,5 @@
 # Dijkstra's Shortest Paths
-Before continuing on with this section, be sure to review the notes on [graphs](https://github.com/bjma/cse-102/tree/master/resources/graphs/README.md) if you aren't comfortable with them.
+>Before continuing on with this section, be sure to review the notes on [graphs](https://github.com/bjma/cse-102/tree/master/resources/graphs/README.md) if you aren't comfortable with them.
 
 Perhaps the most famous problem in computer science, **Dijkstra's algorithm** finds the shortest path from a source vertex `s` to all other vertices in a directed weighted graph `G = (V, E)` (or a destination node `t`), where `len(V) = n`.
 
