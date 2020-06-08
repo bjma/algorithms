@@ -243,3 +243,82 @@ When do we choose to keep things the same and when do we choose to update?
 
 Thus, we get a recurrence:
 ![recurrence](https://i.imgur.com/fpXYdsU.png)
+
+## Optimal substructure
+As a reminder, a problem of size *n* has an optimal substructure if its global solution can be built from subsolutions to subproblems of size *n' < n*. Based on this definition, can you guess what the optimal substructure to this problem is? 
+
+Looking at how we build our [solution table](#problem-visualization), we can see how the optimal substructure works as the algorithm continues to run.
+
+More specifically, the optimal substructure lies in our recurrence, or in other words, how we decide *when* to update which items to put into the knapsack:
+
+``` python
+# Max value sum when considering items 1, ..., j  at current weight capacity w
+V[j][w] = max(V[j - 1][w], V[j - 1][w - w_j] + v_j)
+```
+
+Our optimal substructure lies in how we solve our overlapping subproblems, which are the maximum value we can have in a knapsack with a subcapacity `w <= C` when considering items `1, ..., j <= n`. Let's redefine our **overlapping subproblems** first.
+
+We solve our subproblems by solving for all possible weight capacities from `0` to `C` when considering `items[1]`, `items[1:2]`, ..., `items[1:n]`. 
+
+When we want to consider a new maximum value at some capacity `w` by choosing from items `items[1:k]` (`k <= n`), we first compute the maximum value possible if we choose to put `items[k]` into the knapsack using our recurrence. We do so by adding the value of `items[k]` to the maximum possible value when considering `items[1:k - 1]` at a subcapacity `w - w_j`. This way, we're solving for the subproblem by solving a smaller subproblem, which is the maximum value in our knapsack at some smaller subcapacity `w' < w` when considering items `1, ..., k - 1`. *This* is how our **optimal substructure** is formed - we use previous solutions to smaller subproblems to solve other subproblems, which in turn builds up to the global solution.
+
+To contextualize this, let's use our previous [example](#problem-visualization) (`C = 7` and `n = 5`) and try to solve for the maximum value we can have at `w = 6` when considering `items[1:5]`:
+
+|       | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7     |
+|-------|---|---|---|---|---|---|---|-------|
+| **0** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0     |
+| **1** | 0 | 0 | 0 | 2 | 2 | 2 | 2 | 2     |
+| **2** | 0 | 2 | 2 | 2 | 4 | 4 | 4 | 4     |
+| **3** | 0 | 2 | 2 | 4 | 6 | 6 | 6 | 8     |   
+| **4** | 0 | 2 | 2 | 4 | 6 | 7 | 7 | 9     |
+| **5** | 0 | 2 | 3 | 5 | 6 | 7 | <span style="color:red">X</span>  |       |
+
+Here's the value and weight for `items[5]`
+
+``` python
+items[5] = (v[5] = 3, w[5] = 2)
+```
+
+If our current capacity is `w = 6` and we choose to put `items[5]` into our knapsack, then its weight reduces our current capacity to `w = 6 - 2`, making `w = 4`. Since we already added `items[5]`, then we can only choose from `items[1:4]`.
+
+This is where our optimal substructure comes into play. If you look at the table, we already solved the smaller subproblem where we compute the maximum value possible when considering `items[1:4]` at the capacity `w = 4` (highlighted in green):
+
+|       | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7     |
+|-------|---|---|---|---|---|---|---|-------|
+| **0** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0     |
+| **1** | 0 | 0 | 0 | 2 | 2 | 2 | 2 | 2     |
+| **2** | 0 | 2 | 2 | 2 | 4 | 4 | 4 | 4     |
+| **3** | 0 | 2 | 2 | 4 | 6 | 6 | 6 | 8     |   
+| **4** | 0 | 2 | 2 | 4 | <span style="color:green">6</span> | 7 | 7 | 9     |
+| **5** | 0 | 2 | 3 | 5 | 6 | 7 | <span style="color:red">X</span>  |       |
+
+This brings us to the solution to our current subproblem, which is the maximum value we can get when adding `items[5]` to our knapsack when `w = 6`:
+
+``` python
+# maximum value when considering items[1:4] at w = 4
+V[4][4] = 6
+# current maximum value when choosing items[5] at w = 6
+curr_val = V[4][4] + 3 = 6 + 3 = 9
+```
+
+This `curr_val` is *greater than* our other previous subproblem, which is the maximum possible value when considering `items[1:4]` at `w = 6`:
+
+``` python
+V[4][6] = 7
+```
+
+Thus, we get a new **optimal solution** `V[5][6] = 9` to the subproblem when our weight capacity is `w = 6` (highlighted in red):
+
+|       | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7     |
+|-------|---|---|---|---|---|---|---|-------|
+| **0** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0     |
+| **1** | 0 | 0 | 0 | 2 | 2 | 2 | 2 | 2     |
+| **2** | 0 | 2 | 2 | 2 | 4 | 4 | 4 | 4     |
+| **3** | 0 | 2 | 2 | 4 | 6 | 6 | 6 | 8     |   
+| **4** | 0 | 2 | 2 | 4 | <span style="color:green">6</span> | 7 | 7 | 9     |
+| **5** | 0 | 2 | 3 | 5 | 6 | 7 | <span style="color:red">9</span>  |       |
+
+If we continue onto the next step, we'll be using the optimal substructure to solve for the *globally* optimal solution `V[5][7]`.
+
+
+
