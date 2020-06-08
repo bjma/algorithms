@@ -18,11 +18,11 @@ Notice how, if our grid is *2 x 2*, filling a tromino in that space will leave o
 
 ![tromino-4x4](https://i.imgur.com/UMI0eSj.png)
 
-Our original grid contains a gap, so technically it's okay if we leave a gap in this subproblem. Thus, we solved one of the subproblems, which is filling in a *2 x 2* grid. However, if we can't divide the grid into *2x2* subgrids easily, and it's extremely inefficient. What we need to do now is find a way to get to this subproblem.
+Our original grid contains a gap, so technically it's okay if we leave a gap in this subproblem. Thus, we solved one of the subproblems, which is filling in a *2 x 2* grid. However, we can't divide the grid into *2x2* subgrids easily, and it's extremely inefficient. What we need to do now is find a way to get to this subproblem.
 
 We defined a base case (smallest case where our problem can be solved), but we haven't defined a good subproblem yet. What if we widen our scope in how we divide the grid?
 
-Notice how the problem defines *n = 2<sup>k</sup>*, indicating that our dimensions are always squared powers of *2*. We can use a little bit of math to find our subproblems. If we **divide** our *n x n* grid into four equal parts, which is basically dividing the grid in half in the horizontal and vertical axes, we basically divide *n / 2 = 2<sup>k</sup> / 2 = 2<sup>k - 1</sup>*. Since *k >= 1*, this implies that our exit clause (no solution, so return) is *2<sup>1 - 1</sup> = 1* when dividing each axis into half. 
+Notice how the problem defines *n = 2<sup>k</sup>*, indicating that our dimensions are always squared powers of *2*. We can use a little bit of math to find our subproblems. If we **divide** our *n x n* grid into four equal parts, which is basically dividing the grid in half on the horizontal and vertical axes, we get *n / 2 = 2<sup>k</sup> / 2 = 2<sup>k - 1</sup>*. Since *k >= 1*, this implies that our exit clause (no solution, so return) is *2<sup>1 - 1</sup> = 1* when dividing each axis into half. Otherwise, we can get to our base case when *k = 2*.
 
 We've now determined 3 things:
 * When a grid is *2 x 2*, we solve our problem by placing the tromino anywhere (base case)
