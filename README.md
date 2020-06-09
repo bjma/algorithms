@@ -21,7 +21,7 @@ I think the biggest thing to take away from the course is how many different str
 * Resources
     * Runtime analysis (Big O, recurrence relations)
     * Graph theory crash course
-    * Textbook solutions (not homework solutions)
+    * ~Textbook solutions (not homework solutions)~ (DEPRECATED)
 
 
 ## Sources
