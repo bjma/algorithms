@@ -74,7 +74,7 @@ As we can see, all the vertices in the cycle are reachable from one another. If 
 
 If you want to see the usefulness in using strongly connected components, check out [this](https://www.youtube.com/watch?v=qz9tKlF431k) Google mock interview video.
 
-### Directed acyclic graph (DAG)
+#### Directed acyclic graph (DAG)
 A directed acyclic graph, often abbreviated to DAG, is a directed graph that contains no cycles. To visualize:
 
 ![dag](https://miro.medium.com/max/4000/1*Fi1AZPZLrGf-6wM_wTSPQw.png)
@@ -89,5 +89,4 @@ A graph with `n` nodes and `m` edges can be represented as an *n x n* matrix, wh
 The figure below displays an undirected graph and its corresponding adjacency matrix.
 
 ![adj-mat](https://i.imgur.com/KyifR9h.png)
-
 
