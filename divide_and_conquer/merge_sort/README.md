@@ -166,10 +166,15 @@ We can see that eventually, we get to some small partition of *T(n / 2<sup>k</su
 
 Using some math, we can see that:
 *n = 2<sup>k</sup>*
+
 *log<sub>2</sub>(n) = log<sub>2</sub>(2<sup>k</sup>)*
+
 *log<sub>2</sub>(n) = k * log<sub>2</sub>(2)*
+
 *log<sub>2</sub>(n) = k * 1*
+
 *log(n) = k*
+
 **Note that log<sub>2</sub>(n) can be simplified to log(n)**
 
 Thus, the runtime for `sort()` is *O(logn)*. However, we're not done yet. We also need to consider the runtime for `merge()`, since it's called in each recursive call to `sort()`.
