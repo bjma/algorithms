@@ -1,33 +1,48 @@
-# CSE 102: Intro to Algorithm Analysis & Design
-> **Taken with**: David Helmbold, Spring 2020
+# Algorithms :book:
 
-This repository is used for notes on algorithm design strategies and some common algorithms.
+This repository contains notes on algorithm design strategies and some common algorithms covered in university textbooks. 
 
-It also includes code written in Python for each algorithm, but please note that I don't run any of my code so they might not actually run.
+All solutions and implementations are written in Python.
 
-I think the biggest thing to take away from the course is how many different strategies there are to solve algorithm problems that doesn't use brute force. This is especially useful for technical interview questions for software engineering positions.
+## Introduction
+In Spring 2020, I took my university's Intro to Algorithm Analysis & Design course. I struggled a lot in this course - wrapping your ahead around the different approaches to writing algorithms came slowly to me.
+
+The weekend before finals week, I decided to write up this entire repository of notes to review, using my professor's lecture slides as reference. In the end, I think I came out understanding this stuff pretty well.
+
+I'm leaving this repository public for any other students who also struggle with this material, in hope that you guys see how cool this stuff is to learn.
+
+## Why algorithms?
+A lot of computer science students dread the inevitable moment when they take their first algorithm class. The material is notoriously difficult to digest, and actually having to implement these algorithms is nerve-wracking.
+
+So why learn them?
+
+Although you'll probably never have to write an actual groundbreaking algorithm as a software engineer, but knowing different algorithm design strategies is especially important when you're going to be writing efficient code.
+
+Think about this - how would you sort an array of numbers? The naive approach everyone learns is the *brute force* method - compare each element at an index with each and every other element at other indices:
+
+``` python
+def sort(A):
+    n = len(A)
+    for i in range(n):
+        for i in range(n - i):
+            if A[i] > A[i + 1]:
+                A[i], A[i + 1] = A[i + 1], A[i]
+    return A
+```
+
+The thing is, this brute force way of sorting is inefficient. For small arrays, the speed doesn't make that much of a difference. However, if our arrays were size, say, *1000*, sorting using this method takes a long time.
+
+One algorithm strategy that sorts an array much faster than this brute force method is divide and conquer (namely, [merge sort](https://github.com/bjma/algorithms/tree/master/divide_and_conquer/merge_sort)).
+
+As a software engineer, you'll be required to write efficient, scalable code. To do this, having an understanding of algorithm design is essential. Not only that, technical interviews for software engineering positions involve the algorithmic strategies in this repository.
+
+The biggest thing to take away from the materials I'm providing is that there are many different strategies to solve algorithm problems which don't involve brute force.
 
 ## Content
 * Divide & Conquer
-    * Notes on strategies
-    * Notes on algorithms
 * Greedy Algorithms
-    * Notes on strategies
-    * Notes on algorithms
-    * Notes on proofs
 * Dynamic Programming
-    * Notes on strategies
-    * Notes on algorithms
 * Resources
     * Runtime analysis (Big O, recurrence relations)
     * Graph theory crash course
-    * ~Textbook solutions (not homework solutions)~ (DEPRECATED)
 
-
-## Sources
-* Algorithm Design, Jon Klenberg et. al.
-* Geeks for Geeks
-* Wikipedia
-
-## Dear David, Vishal (vkrish), Siman, & Zekun
-This repo won't contain any homework solutions, so don't bother looking for any answers here! This is meant as a supplemental pseudo-textbook for students.
