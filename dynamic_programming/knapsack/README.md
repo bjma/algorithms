@@ -4,7 +4,7 @@ The [Knapsack problem](https://en.wikipedia.org/wiki/Knapsack_problem) is a pret
 There are two variations, the simple Knapsack problem (where you can use a greedy heuristic to solve the problem), and the 0-1 Knapsack problem, which forces you to either *choose* or *not choose* to collect an item (binary choice).
 
 ## Problem
-Imagine that you are a robber breaking into a house to steal some `n` items. You are carrying a knapsack with a maximum weight capacity `C`, and can choose any number of items with an associated weight `w` and value `v`, so long as the total weight of the items you chose don't exceed the capacity `C`.
+Imagine that you are a robber breaking into a house to steal some `n` items. You are carrying a knapsack with a maximum weight capacity `C`, and can choose any number of items with an associated value `v` and weight `w`, so long as the total weight of the items you chose don't exceed the capacity `C`.
 
 Below is a simple visualization of the problem.
 
@@ -54,19 +54,19 @@ Here's how our solution unfolds if we chose `items[1]` as the first one to put i
 ``` python
 # C = 7 - 3
 C = 4
-# total_val = 0 + 2 
-total_val = 2
+total_val = 0 + 2
 
-# now that we have a new capacity C = 4, then we only 
-# have a few items to choose from: items 2, 3, and 5
+# now that we have a new capacity C = 4, we only 
+# have a few items to choose from: items 2, 3, 4, and 5
 
-# pick item 2
-C = 2
-total_val = 3
+# pick item 2 (v=2, w=1)
+C = 4 - 1 = 3
+total_val = 2 + 2 = 4
 
-# we can only choose item 5 now, since its weight = 2
+# we can choose between item 3 (v=4, w=3) or item 5 (v=3, w=2). 
+# since item 3 has a greater value, then we pick item 3
 C = 0
-total_val = 5
+total_val = 4 + 4 = 8
 
 # what if we picked item 3 instead of item 2?
 
